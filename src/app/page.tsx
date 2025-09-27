@@ -8,7 +8,9 @@ export default function Home() {
 
   if (!session?.user) {
     return (
-      <div className="flex min-h-screen flex-col justify-center px-10 md:flex-row md:items-center md:justify-between md:gap-8">
+      <div className="flex min-h-screen flex-col justify-center px-10 md:flex-row md:items-center md:justify-between md:gap-4">
+        {/* Reduzi o gap de 8 para 4 */}
+
         <div className="space-y-4 md:w-1/2">
           <h1 className="text-2xl font-bold md:text-4xl">
             Deseja facilidade para gestão de estoque?
@@ -19,7 +21,8 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="mt-8 flex justify-start md:mt-0 md:w-1/2 md:justify-end">
+        <div className="mt-4 flex justify-start md:mt-0 md:w-1/2 md:justify-end">
+          {/* Reduzi mt-8 para mt-4 */}
           <Image src="/celular.png" alt="Celular" width={300} height={300} />
         </div>
       </div>
