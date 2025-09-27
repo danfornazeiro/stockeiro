@@ -73,7 +73,7 @@ const SignForm = () => {
   }
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-white px-4 md:flex-row md:gap-12 md:px-12">
+    <div className="flex min-h-screen flex-col items-center justify-center px-4 md:flex-row md:gap-12 md:px-12">
       {/* Texto à esquerda (só aparece em telas maiores) */}
       <div className="hidden text-center md:block md:w-1/2 md:text-left">
         <h1 className="text-2xl font-medium text-gray-900 md:text-3xl">
