@@ -16,35 +16,35 @@ interface PlanInterface {
 
 const PlansCard: React.FC<PlanInterface> = ({ plan }) => {
   return (
-    <div className="flex flex-wrap justify-center gap-6">
+    <div className="flex flex-wrap justify-center gap-10">
       {plan.map((item) => (
         <div
           key={item.id}
-          className="relative h-64 w-48 overflow-hidden rounded-[5px] shadow-lg"
+          className="relative h-96 w-72 overflow-hidden rounded-2xl shadow-2xl"
         >
           {/* Fundo do card */}
           <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-b from-gray-800 to-blue-950"></div>
 
           {/* Conteúdo do card */}
-          <div className="absolute bottom-4 left-4 flex flex-col gap-2">
-            <div className="text-lg font-medium text-white">{item.title}</div>
-            <div className="w-36 text-sm text-slate-200">
+          <div className="absolute right-8 bottom-8 left-8 flex flex-col gap-4">
+            <div className="text-2xl font-bold text-white">{item.title}</div>
+            <div className="text-base leading-relaxed text-slate-200">
               {item.description}
             </div>
-            <div className="text-lg font-bold text-white">
+            <div className="text-3xl font-extrabold text-white">
               {formatCentsToBRL(
                 typeof item.price === "string"
                   ? Number(item.price)
                   : item.price,
               )}
             </div>
-            <div className="flex w-full items-center justify-center">
-              <Button className="mt-2 w-full cursor-pointer bg-white text-black hover:bg-gray-200">
+            <div>
+              <Button className="mt-4 w-full cursor-pointer rounded-lg bg-white py-2 text-lg font-medium text-black hover:bg-gray-200">
                 <Link href={`/plans/${item.slug}`}>Assinar agora</Link>
               </Button>
             </div>
-            <div className="">
-              <p className="text-sm font-light text-slate-200">
+            <div>
+              <p className="text-base font-light text-slate-300">
                 {item.percent}% de desconto
               </p>
             </div>

@@ -12,10 +12,10 @@ export default function Home() {
         {/* Reduzi o gap de 8 para 4 */}
 
         <div className="space-y-4 md:w-1/2">
-          <h1 className="text-2xl font-bold md:text-4xl">
+          <h1 className="text-3xl font-bold md:text-4xl">
             Deseja facilidade para gestão de estoque?
           </h1>
-          <p className="text-lg md:text-xl">
+          <p className="text-2xl md:text-xl">
             Experimente nosso sistema de gestão
             <br /> de estoque e tenha mais controle sobre seus produtos.
           </p>
@@ -23,7 +23,7 @@ export default function Home() {
 
         <div className="mt-4 flex justify-start md:mt-0 md:w-1/2 md:justify-end">
           {/* Reduzi mt-8 para mt-4 */}
-          <Image src="/celular.png" alt="Celular" width={300} height={300} />
+          <Image src="/celular.png" alt="Celular" width={500} height={500} />
         </div>
       </div>
     );
