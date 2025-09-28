@@ -10,6 +10,8 @@ const PlansPage = async () => {
     title: plan.title,
     description: plan.description,
     price: plan.price,
+    percent: plan.percent,
+    slug: plan.slug,
   }));
 
   return (

@@ -62,9 +62,11 @@ export const verificationTable = pgTable("verification", {
 
 export const plansTable = pgTable("plans", {
   id: uuid("id").primaryKey().defaultRandom(),
+  slug: text("slug").notNull().unique(),
   title: text("title").notNull(),
   price: text("price").notNull(),
   description: text("description").notNull(),
+  percent: text("percent").notNull(),
   createdAt: timestamp("created_at")
     .$defaultFn(() => new Date())
     .notNull(),
