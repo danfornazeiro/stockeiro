@@ -35,11 +35,8 @@ const Header = () => {
               {session.user.name}
             </span>
 
-            <Button
-              onClick={() => authClient.signOut()}
-              className="border border-gray-300 bg-gray-100 text-black transition-colors hover:bg-gray-200"
-            >
-              Sair
+            <Button className="bg-blue-600 text-white transition-colors hover:bg-blue-700">
+              <Link href="/plans">Ver planos</Link>
             </Button>
           </div>
         ) : (
