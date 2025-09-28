@@ -1,9 +1,9 @@
 interface DetailsPlanPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
-const DetailsPlanPage = ({ params }: DetailsPlanPageProps) => {
-  const { slug } = params;
+const DetailsPlanPage = async ({ params }: DetailsPlanPageProps) => {
+  const { slug } = await params;
   if (slug === "essencial") {
     return <div>Plano sem desconto, com vantagens básicas.</div>;
   }
