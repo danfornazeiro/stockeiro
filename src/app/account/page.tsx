@@ -1,8 +1,16 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const AccountPage = () => {
   const { data: session } = authClient.useSession();
@@ -11,8 +19,18 @@ const AccountPage = () => {
     router.push("/");
   }
   return (
-    <div>
-      <Button onClick={() => authClient.signOut()}>Sign out</Button>
+    <div className="h-screen w-screen">
+      <div className="p-5">
+        <Select>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Tipo de conta" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="funcionario">Funcionário</SelectItem>
+            <SelectItem value="empresa">Empresa</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
     </div>
   );
 };

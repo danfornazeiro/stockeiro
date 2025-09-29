@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { authClient } from "../lib/auth-client";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function Home() {
   const { data: session } = authClient.useSession();
@@ -19,6 +21,11 @@ export default function Home() {
             Experimente nosso sistema de gestão
             <br /> de estoque e tenha mais controle sobre seus produtos.
           </p>
+          <div>
+            <Button className="bg-blue-600 hover:bg-blue-700">
+              <Link href="/plans">Veja os planos disponíveis</Link>
+            </Button>
+          </div>
         </div>
 
         <div className="mt-4 flex justify-start md:mt-0 md:w-1/2 md:justify-end">

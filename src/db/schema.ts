@@ -16,6 +16,16 @@ export const userTable = pgTable("user", {
     .notNull(),
 });
 
+export const userTypeAccountEnum = ["Funcionário", "Empresa"] as const;
+
+export const userTypeAccount = pgTable("user_type_account", {
+  id: text("id").primaryKey(),
+  userId: text("user_id")
+    .notNull()
+    .references(() => userTable.id, { onDelete: "cascade" }),
+  accountType: text("account_type").notNull(),
+});
+
 export const sessionTable = pgTable("session", {
   id: text("id").primaryKey(),
   expiresAt: timestamp("expires_at").notNull(),
@@ -67,6 +77,20 @@ export const plansTable = pgTable("plans", {
   price: text("price").notNull(),
   description: text("description").notNull(),
   percent: text("percent").notNull(),
+  createdAt: timestamp("created_at")
+    .$defaultFn(() => new Date())
+    .notNull(),
+  updatedAt: timestamp("updated_at")
+    .$defaultFn(() => new Date())
+    .notNull(),
+});
+
+export const plansVantageTable = pgTable("plansVantage", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  planId: uuid("plan_id")
+    .notNull()
+    .references(() => plansTable.id), // FK para plans
+  vantage: text("vantage").notNull(), // descrição da vantagem
   createdAt: timestamp("created_at")
     .$defaultFn(() => new Date())
     .notNull(),
