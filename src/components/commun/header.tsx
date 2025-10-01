@@ -7,6 +7,7 @@ import { authClient } from "@/lib/auth-client";
 
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Separator } from "../ui/separator";
+import HeaderOptions from "../aside-and-header/header-aside";
 
 const Header = () => {
   const { data: session } = authClient.useSession();
@@ -31,13 +32,7 @@ const Header = () => {
                 </AvatarFallback>
               </Avatar>
             </Link>
-            <span className="hidden font-medium md:block">
-              {session.user.name}
-            </span>
-
-            <Button className="bg-blue-600 text-white transition-colors hover:bg-blue-700">
-              <Link href="/plans">Ver planos</Link>
-            </Button>
+            <HeaderOptions />
           </div>
         ) : (
           <div className="flex gap-4">

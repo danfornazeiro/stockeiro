@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/commun/header";
 import { Toaster } from "@/components/ui/sonner";
+import RightSearch from "@/components/aside-and-header/pc-aside";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -23,7 +24,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter} antialiased`}>
         <Header />
-        {children}
+        <RightSearch />
+        <div className="lg:mt-[10px] lg:ml-[300px]">{children}</div>
         <Toaster />
       </body>
     </html>
