@@ -3,22 +3,26 @@
 import { Menu, LogOut, Settings } from "lucide-react";
 import { Button } from "../ui/button";
 import { authClient } from "@/lib/auth-client";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Options from "./options";
 import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
-import AOS from "aos";
-import "aos/dist/aos.css";
-
 const HeaderOptions = () => {
   const { data: session } = authClient.useSession();
   const [isOpen, setIsOpen] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
 
   useEffect(() => {
-    AOS.init({ duration: 300 });
-  }, []);
+    if (isOpen) {
+      // adiciona delay para animar fade-in
+      const timer = setTimeout(() => setShowSidebar(true), 10);
+      return () => clearTimeout(timer);
+    } else {
+      setShowSidebar(false);
+    }
+  }, [isOpen]);
 
   if (!session?.user) return null;
 
@@ -36,14 +40,13 @@ const HeaderOptions = () => {
         <>
           {/* Overlay */}
           <div
-            className="fixed inset-0 z-40 bg-black/50"
+            className="fixed inset-0 z-40 bg-black/50 transition-opacity duration-300"
             onClick={() => setIsOpen(false)}
           ></div>
 
-          {/* Sidebar */}
+          {/* Sidebar com fade-in */}
           <aside
-            data-aos="fade-right"
-            className="fixed top-0 left-0 z-50 flex h-screen w-64 flex-col bg-blue-600 p-4 text-white shadow-lg"
+            className={`fixed top-0 left-0 z-50 flex h-screen w-64 transform flex-col bg-blue-600 p-4 text-white shadow-lg transition-all duration-300 ${showSidebar ? "translate-x-0 opacity-100" : "-translate-x-4 opacity-0"} `}
           >
             <div className="mb-8 flex">
               <Link href="/">
